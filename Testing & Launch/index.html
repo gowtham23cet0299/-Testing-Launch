@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Testing & Launch Hub</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .check-item:hover { background-color: #b4c5e7; transition: 0.3s; }
+        .hidden-section { display: none; }
+    </style>
+</head>
+<body class="bg-slate-50 font-sans">
+
+    <header class="bg-blue-700 text-white p-6 shadow-lg text-center">
+        <h1 class="text-3xl font-bold">🚀Testing & Launch Dashboard</h1>
+        <p class="text-blue-100 mt-2">All-in-One Website Deployment Manager</p>
+    </header>
+
+    <div class="container mx-auto p-6 grid grid-cols-1 md:grid-cols-2 gap-8">
+        
+        <section class="bg-white rounded-xl shadow-md p-6">
+            <h2 class="text-xl font-bold border-b pb-3 mb-4 text-gray-700">Launch Checklist (101-110)</h2>
+            <div id="checklist" class="space-y-3">
+                </div>
+        </section>
+
+        <section id="feature-display" class="bg-white rounded-xl shadow-md p-6 border-l-4 border-blue-500">
+            <div id="content-area">
+                <h3 class="text-2xl font-semibold text-blue-600">Select a topic</h3>
+                <p class="text-gray-500 mt-4">Click on any task on the left to test the feature and see the code logic.</p>
+            </div>
+        </section>
+
+    </div>
+
+    <script>
+        const tasks = [
+            { id: 101, name: "Functional Testing", desc: "Verifies if the buttons and forms work.", tool: "testFunctional()" },
+            { id: 102, name: "UI Testing", desc: "Checks visual elements and layout consistency.", tool: "testUI()" },
+            { id: 103, name: "Mobile Responsiveness", desc: "Simulates mobile view check.", tool: "testMobile()" },
+            { id: 104, name: "Load Testing", desc: "Simulates heavy traffic handling.", tool: "testLoad()" },
+            { id: 105, name: "Backup before launch", desc: "Database and file backup system.", tool: "testBackup()" },
+            { id: 106, name: "DNS Configuration", desc: "Domain Name System mapping.", tool: "testDNS()" },
+            { id: 107, name: "Live Server Deployment", desc: "Pushing code to production.", tool: "testDeploy()" },
+            { id: 108, name: "Final Content Review", desc: "Checking for typos and broken links.", tool: "testContent()" },
+            { id: 109, name: "Client Approval", desc: "Digital signature and final sign-off.", tool: "testApproval()" },
+            { id: 110, name: "Website Launch", desc: "The big green button to go live!", tool: "testLaunch()" }
+        ];
+
+        const checklistDiv = document.getElementById('checklist');
+        const displayArea = document.getElementById('content-area');
+
+        // Render Checklist
+        tasks.forEach(task => {
+            checklistDiv.innerHTML += `
+                <div onclick="${task.tool}" class="check-item p-4 border rounded-lg cursor-pointer flex justify-between items-center">
+                    <div>
+                        <span class="text-sm font-bold text-blue-500">#${task.id}</span>
+                        <h4 class="font-medium text-gray-800">${task.name}</h4>
+                    </div>
+                    <span class="text-gray-400">➔</span>
+                </div>
+            `;
+        });
+
+        // Feature Logic Functions
+        function updateDisplay(title, content, actionName) {
+            displayArea.innerHTML = `
+                <h3 class="text-2xl font-bold text-gray-800">${title}</h3>
+                <p class="text-gray-600 mt-3">${content}</p>
+                <div class="mt-6 p-4 bg-gray-100 rounded border italic text-sm">Status: Ready to execute...</div>
+                <button onclick="alert('${title} Successful!')" class="mt-6 bg-green-500 text-white px-6 py-2 rounded hover:bg-green-600 w-full font-bold">
+                    Execute ${actionName}
+                </button>
+            `;
+        }
+
+        function testFunctional() { updateDisplay("Functional Testing", "Input oru form fill panni 'Submit' click panna, data correct-ah store aaguthanu check pannum.", "Validation Test"); }
+        function testUI() { updateDisplay("UI Testing", "Ellaa buttons, colors, matrum fonts design padi irukkanu check panrom.", "Visual Audit"); }
+        function testMobile() { updateDisplay("Mobile Responsiveness", "Screen size 375px (Mobile) la content correct-ah fit aaguthanu test panrom.", "Resize Check"); }
+        function testLoad() { updateDisplay("Load Testing", "Ore nerathula 1000 users vantha website speed eppidi irukku?", "Stress Test"); }
+        function testBackup() { updateDisplay("Backup Before Launch", "Full database matrum assets .zip file-ah save panrom.", "Download Backup"); }
+        function testDNS() { updateDisplay("DNS Configuration", "Domain (example.com) IP address-oda map aagi irukka?", "Ping Server"); }
+        function testDeploy() { updateDisplay("Live Server Deployment", "Local code-ai 'GitHub' vazhiya Live Server-ku push panrom.", "Production Push"); }
+        function testContent() { updateDisplay("Final Content Review", "Spelling mistakes matrum 404 broken links check panrom.", "Grammar & Link Scan"); }
+        function testApproval() { updateDisplay("Client Approval", "Client kitta irunthu final digital sign-off vaanguroam.", "Request Approval"); }
+        function testLaunch() { updateDisplay("Website Launch", "Site is now public! Traffic open panrom.", "GO LIVE 🚀"); }
+
+    </script>
+</body>
+</html>
